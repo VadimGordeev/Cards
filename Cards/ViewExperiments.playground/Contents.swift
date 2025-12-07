@@ -16,6 +16,8 @@ class MyViewController : UIViewController {
         let whiteView = getWhiteView()
         let pinkView = getPinkView()
         
+        redView.transform = CGAffineTransform(rotationAngle: .pi/3)
+        
         set(view: greenView, toCenterOfView: redView)
         whiteView.center = greenView.center
         
@@ -92,18 +94,7 @@ class MyViewController : UIViewController {
     }
     
     private func set(view moveView: UIView, toCenterOfView baseView: UIView) {
-//        размеры вложенного представления
-        let moveViewWidth = moveView.frame.width
-        let moveViewHeight = moveView.frame.height
-        
-//        размеры родительского представления
-        let baseViewWidth = baseView.frame.width
-        let baseViewHeight = baseView.frame.height
-        
-//        вычисление и изменение координат
-        let newXCoordinate = (baseViewWidth - moveViewWidth) / 2
-        let newYCoordinate = (baseViewHeight - moveViewHeight) / 2
-        moveView.frame.origin = CGPoint(x: newXCoordinate, y: newYCoordinate)
+        moveView.center = CGPoint(x: baseView.bounds.midX, y: baseView.bounds.midY)
     }
 }
 // Present the view controller in the Live View window
