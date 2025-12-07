@@ -13,10 +13,14 @@ class MyViewController : UIViewController {
         self.view = getRootView()
         let redView = getRedView()
         let greenView = getGreenView()
+        let whiteView = getWhiteView()
+        
         set(view: greenView, toCenterOfView: redView)
+        whiteView.center = greenView.center
         
         self.view.addSubview(redView)
         redView.addSubview(greenView)
+        redView.addSubview(whiteView)
     }
     
 //    создание корневого представления
@@ -41,6 +45,14 @@ class MyViewController : UIViewController {
         let viewFrame: CGRect = CGRect(x: 10, y: 10, width: 180, height: 180)
         let view = UIView(frame: viewFrame)
         view.backgroundColor = .green
+        return view
+    }
+    
+//    создание белого представления
+    private func getWhiteView() -> UIView {
+        let viewFrame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 50)
+        let view = UIView(frame: viewFrame)
+        view.backgroundColor = .white
         return view
     }
     
