@@ -80,6 +80,14 @@ class MyViewController : UIViewController {
         layer.cornerRadius = 10
         view.layer.addSublayer(layer)
         
+//        view.transform = CGAffineTransform(rotationAngle: .pi/3)
+//            .scaledBy(x: 2, y: 0.8)
+//            .translatedBy(x: 50, y: 50)
+////        отмена преобразований
+////        view.transform = CGAffineTransform.identity
+////        inverted - инвертирует значение
+//        view.transform = CGAffineTransform(rotationAngle: .pi/4).inverted()
+        
         return view
     }
     
