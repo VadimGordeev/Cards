@@ -12,8 +12,11 @@ class MyViewController : UIViewController {
     private func setupViews() {
         self.view = getRootView()
         let redView = getRedView()
+        let greenView = getGreenView()
+        set(view: greenView, toCenterOfView: redView)
+        
         self.view.addSubview(redView)
-        redView.addSubview(getGreenView())
+        redView.addSubview(greenView)
     }
     
 //    создание корневого представления
@@ -35,10 +38,25 @@ class MyViewController : UIViewController {
     
 //    создание зеленого представления
     private func getGreenView() -> UIView {
-        let viewFrame: CGRect = CGRect(x: 100, y: 100, width: 180, height: 180)
+        let viewFrame: CGRect = CGRect(x: 10, y: 10, width: 180, height: 180)
         let view = UIView(frame: viewFrame)
         view.backgroundColor = .green
         return view
+    }
+    
+    private func set(view moveView: UIView, toCenterOfView baseView: UIView) {
+//        размеры вложенного представления
+        let moveViewWidth = moveView.frame.width
+        let moveViewHeight = moveView.frame.height
+        
+//        размеры родительского представления
+        let baseViewWidth = baseView.frame.width
+        let baseViewHeight = baseView.frame.height
+        
+//        вычисление и изменение координат
+        let newXCoordinate = (baseViewWidth - moveViewWidth) / 2
+        let newYCoordinate = (baseViewHeight - moveViewHeight) / 2
+        moveView.frame.origin = CGPoint(x: newXCoordinate, y: newYCoordinate)
     }
 }
 // Present the view controller in the Live View window
