@@ -14,11 +14,13 @@ class MyViewController : UIViewController {
         let redView = getRedView()
         let greenView = getGreenView()
         let whiteView = getWhiteView()
+        let pinkView = getPinkView()
         
         set(view: greenView, toCenterOfView: redView)
         whiteView.center = greenView.center
         
         self.view.addSubview(redView)
+        self.view.addSubview(pinkView)
         redView.addSubview(greenView)
         redView.addSubview(whiteView)
     }
@@ -53,6 +55,31 @@ class MyViewController : UIViewController {
         let viewFrame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 50)
         let view = UIView(frame: viewFrame)
         view.backgroundColor = .white
+        return view
+    }
+    
+    //    создание розового представления
+    private func getPinkView() -> UIView {
+        let viewFrame: CGRect = CGRect(x: 50, y: 300, width: 100, height: 100)
+        let view = UIView(frame: viewFrame)
+        view.backgroundColor = .systemPink
+        
+        view.layer.borderWidth = 5
+        view.layer.borderColor = UIColor.yellow.cgColor
+        view.layer.cornerRadius = 10
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 20
+        view.layer.shadowOffset = CGSize(width: 10, height: 20)
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.opacity = 0.7
+        
+//        создание дочернего слоя
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.black.cgColor
+        layer.frame = CGRect(x: 10, y: 10, width: 20, height: 20)
+        layer.cornerRadius = 10
+        view.layer.addSublayer(layer)
+        
         return view
     }
     
